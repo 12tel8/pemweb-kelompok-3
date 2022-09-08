@@ -1,3 +1,4 @@
+<div>
 <div class="flex p-3 items-center justify-between bg-blue-700">
     <div>
         <div><img src="" alt=""></div>
@@ -11,4 +12,5 @@
         <button class="button button-dark">login</button>
         <button class="button button-dark">Register</button>
     </div>
+</div>
 </div>

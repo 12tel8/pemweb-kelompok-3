@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+// auth Controller
+use App\Http\Controllers\auth\RegisterController ; 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +16,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('login', function () {
-    return view('pages/auth/login');
-});
+Route::get('register',[RegisterController::class , 'create'])->name('register');
+Route::post('register',[RegisterController::class , 'store'])->name('register');
