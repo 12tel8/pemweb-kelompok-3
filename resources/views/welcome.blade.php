@@ -10,6 +10,6 @@
     @vite('resources/css/app.css')
 </head>
 <body>
-
+    <div class="button button-pink">test</div>
 </body>
 </html>
