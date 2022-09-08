@@ -1,5 +1,3 @@
-<script src="node_modules/@material-tailwind/html@latest/scripts/ripple.js"></script>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +8,6 @@
     @vite('resources/css/app.css')
 </head>
 <body>
-    <div class="button button-pink">test</div>
+    <x-navbar></x-navbar>
 </body>
 </html>
