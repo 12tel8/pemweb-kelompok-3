@@ -5,6 +5,7 @@ namespace App\Http\Controllers\auth;
 // built in
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 // models
 use App\Models\User;
@@ -16,17 +17,15 @@ class RegisterController extends Controller
         return view('pages.auth.register');
     }
 
-    public function store(Request $request){
-        $request->validate([
-            'name' => ['required','string','min:3'],
+    public function store(){
+        $attributes = request()->validate([
+            'username' => ['required','string','min:6'],
             'email' => ['required','email'],
             'password' => ['required','min:6']
         ]);
 
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->name)
-        ]);
+        auth()->login(User::create($attributes));
+
+        return redirect('/main')->with('success', 'Your account has been created.');
     }
 }

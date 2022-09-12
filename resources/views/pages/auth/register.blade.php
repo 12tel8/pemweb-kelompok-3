@@ -10,66 +10,65 @@
 </head>
 <body>
     <x-navbar></x-navbar>
-    <div class="flex mt-20 justify-center">
-    <div class="card w-[500px] ">
-    <div class="card-header mx-4 -mt-6 ">
-        <div class="shadow-blue pe-1 rounded-lg bg-blue-700 py-3">
-        <h4 class="mt-2 mb-0 text-center font-bold text-white">Sign up</h4>
-        <div class="mt-4 flex">
-            <a class="button button-text ml-auto" href="#">
-            <i class="fab fa-facebook-f text-lg text-white"></i>
-            </a>
-            <a class="button button-text" href="#">
-            <i class="fab fa-github text-lg text-white"></i>
-            </a>
-            <a class="button button-text mr-auto" href="#">
-            <i class="fab fa-google text-lg text-white"></i>
-            </a>
-        </div>
+    <div class="flex justify-center mt-20">
+        <div class="card w-[500px]">
+            <div class="card-header mx-4 -mt-6">
+                <div class="shadow-pink pe-1 rounded-lg bg-blue-500 py-3">
+                <h4 class="mt-2 mb-0 text-center font-bold text-white">Sign Up</h4>
+                <div class="mt-4 flex">
+                    <a class="button button-text ml-auto" href="#">
+                    <i class="fab fa-facebook-f text-lg text-white"></i>
+                    </a>
+                    <a class="button button-text" href="#">
+                    <i class="fab fa-github text-lg text-white"></i>
+                    </a>
+                    <a class="button button-text mr-auto" href="#">
+                    <i class="fab fa-google text-lg text-white"></i>
+                    </a>
+                </div>
+                </div>
+            </div>
+            <div class="card-body">
+            <form action="{{ route('register') }}" method="post">
+                @csrf
+                <div class="input-group-outline input-group my-3">
+                    <label class="form-label">Username</label>
+                    <input type="username" name="username" value="{{ old('username') }}" class="form-control"/>
+                    @error('username')
+                        <div class="text-red-700">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="input-group-outline input-group my-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" name="email" value="{{ old('email') }}" class="form-control"/>
+                    @error('email')
+                        <div class="text-red-700">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="input-group-outline input-group my-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" name="password" value="{{ old('password') }}" class="form-control"/>
+                    @error('password')
+                        <div class="text-red-700">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <button class="button button-blue w-full" type="submit">Sign Up</button>
+                </form>
+                <a href="{{ route('login') }}">
+                <p class="mt-5 mb-0 text-center text-sm">Don't have an account?</p>
+                </a>
+            </div>
         </div>
     </div>
-    <div class="card-body">
-        <form action="{{ route('register') }}" method="post">
-            @csrf
-            
-        <div class="input-group-outline input-group my-3">
-            <label class="form-label">Name</label>
-            <input name="name" type="text" class="form-control" />
-            @error('name')
-                <div class="text-red-700">
-                    {{ $message }}
-                </div>
-            @enderror
-        </div>
-        <div class="input-group-outline input-group my-3">
-            <label class="form-label">Email</label>
-            <input name="email" type="email" class="form-control" />
-            @error('email')
-                <div class="text-red-700">
-                    {{ $message }}
-                </div>
-            @enderror
-        </div>
-        <div class="input-group-outline input-group my-3">
-            <label class="form-label">Password</label>
-            <input name="password" type="password" class="form-control" />
-            @error('password')
-                <div class="text-red-700">
-                    {{ $message }}
-                </div>
-            @enderror
-        </div>
-        <input
-            class="absolute z-10 h-5 w-8 cursor-pointer opacity-0"
-            data-attribute="toggle"
-            id="remember"
-        />
-        <button type="submit" class="button button-blue !bg-blue-700 w-full">Create Account</button>       
-    </form>
-    </div>
-</div>
 </body>
 </html>
 
-<script src="node_modules/@material-tailwind/html@latest/scripts/ripple.js"></script>
-<script src="https://unpkg.com/@material-tailwind/html@latest/scripts/script-name.js"></script>
+<script src="https://unpkg.com/@material-tailwind/html@latest/scripts/input.js"></script>
+<script src="https://unpkg.com/@material-tailwind/html@latest/scripts/ripple.js"></script>
+<script src="https://unpkg.com/@material-tailwind/html@latest/scripts/menu.js"></script>
