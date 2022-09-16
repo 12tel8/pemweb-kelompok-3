@@ -26,3 +26,16 @@ Route::post('login',[LoginController::class , 'store'])->name('login');
 Route::get('main',function(){
     return view('pages.main.main');
 });
+
+// booking
+Route::get('pesawat',function(){
+    return view('pages.main.booking.booking_planes');
+});
+
+Route::get('kereta',function(){
+    return view('pages.main.booking.booking_trains');
+});
+
+Route::get('bus',function(){
+    return view('pages.main.booking.booking_buses');
+});
