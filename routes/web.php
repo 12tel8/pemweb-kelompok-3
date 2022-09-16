@@ -39,3 +39,8 @@ Route::get('kereta',function(){
 Route::get('bus',function(){
     return view('pages.main.booking.booking_buses');
 });
+
+// Landing
+Route::get('/',function(){
+    return view('pages.main.landing.landing_page');
+});
