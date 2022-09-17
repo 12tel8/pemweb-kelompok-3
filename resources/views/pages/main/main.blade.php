@@ -7,6 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    hello {{auth()->user()->username}}
+    hello {{auth()->user()->email}}
 </body>
 </html>
