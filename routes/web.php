@@ -49,3 +49,5 @@ Route::get('auth/google/callback',[auth\social\GoogleAuthController::class,'call
 
 Route::get('auth/facebook/redirect',[auth\social\FacebookAuthController::class,'redirect'])->name('facebook/redirect');
 Route::get('auth/facebook/callback',[auth\social\FacebookAuthController::class,'callback'])->name('facebook/callback');
+
+Route::get('kirim-email',[App\Http\Controllers\mail\MailController::class,'index']);
