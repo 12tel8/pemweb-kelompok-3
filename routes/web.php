@@ -46,3 +46,6 @@ Route::get('/',function(){
 
 Route::get('auth/google/redirect',[auth\social\GoogleAuthController::class,'redirect'])->name('google/redirect');
 Route::get('auth/google/callback',[auth\social\GoogleAuthController::class,'callback'])->name('google/callback');
+
+Route::get('auth/facebook/redirect',[auth\social\FacebookAuthController::class,'redirect'])->name('facebook/redirect');
+Route::get('auth/facebook/callback',[auth\social\FacebookAuthController::class,'callback'])->name('facebook/callback');
