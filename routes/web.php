@@ -3,8 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 // auth Controller
-use App\Http\Controllers\auth\RegisterController ; 
-use App\Http\Controllers\auth\LoginController ; 
+use App\Http\Controllers\auth ; 
 
 /*
 |--------------------------------------------------------------------------
@@ -17,11 +16,11 @@ use App\Http\Controllers\auth\LoginController ;
 |
 */
 
-Route::get('register',[RegisterController::class , 'create'])->name('register');
-Route::post('register',[RegisterController::class , 'store'])->name('register');
+Route::get('register',[auth\RegisterController::class , 'create'])->name('register');
+Route::post('register',[auth\RegisterController::class , 'store'])->name('register');
 
-Route::get('login',[LoginController::class , 'create'])->name('login');
-Route::post('login',[LoginController::class , 'store'])->name('login');
+Route::get('login',[auth\LoginController::class , 'create'])->name('login');
+Route::post('login',[auth\LoginController::class , 'store'])->name('login');
 
 Route::get('main',function(){
     return view('pages.main.main');
@@ -44,3 +43,9 @@ Route::get('bus',function(){
 Route::get('/',function(){
     return view('pages.main.landing.landing_page');
 });
+
+Route::get('auth/google/redirect',[auth\social\GoogleAuthController::class,'redirect'])->name('google/redirect');
+Route::get('auth/google/callback',[auth\social\GoogleAuthController::class,'callback'])->name('google/callback');
+
+Route::get('auth/facebook/redirect',[auth\social\FacebookAuthController::class,'redirect'])->name('facebook/redirect');
+Route::get('auth/facebook/callback',[auth\social\FacebookAuthController::class,'callback'])->name('facebook/callback');

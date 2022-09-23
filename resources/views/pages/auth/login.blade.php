@@ -23,13 +23,13 @@
                 <div class="shadow-pink pe-1 rounded-lg bg-blue-500 py-3">
                 <h4 class="mt-2 mb-0 text-center font-bold text-white">Sign In | Login</h4>
                 <div class="mt-4 flex">
-                    <a class="button button-text ml-auto" href="#">
+                    <a class="button button-text ml-auto" href={{route('facebook/redirect')}}>
                     <i class="fab fa-facebook-f text-lg text-white"></i>
                     </a>
                     <a class="button button-text" href="#">
                     <i class="fab fa-github text-lg text-white"></i>
                     </a>
-                    <a class="button button-text mr-auto" href="#">
+                    <a class="button button-text mr-auto" href={{route('google/redirect')}}>
                     <i class="fab fa-google text-lg text-white"></i>
                     </a>
                 </div>
