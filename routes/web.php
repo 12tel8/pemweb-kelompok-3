@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 // auth Controller
 use App\Http\Controllers\auth ; 
+use App\Http\Controllers\payments\StripePaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,3 +52,6 @@ Route::get('auth/facebook/redirect',[auth\social\FacebookAuthController::class,'
 Route::get('auth/facebook/callback',[auth\social\FacebookAuthController::class,'callback'])->name('facebook/callback');
 
 Route::get('kirim-email',[App\Http\Controllers\mail\MailController::class,'index']);
+
+Route::get('stripe', [StripePaymentController::class, 'stripe'])->name('stripe');
+Route::post('stripe', [StripePaymentController::class, 'stripePost'])->name('stripe.post');
