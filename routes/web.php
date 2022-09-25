@@ -17,11 +17,15 @@ use App\Http\Controllers\payments\StripePaymentController;
 |
 */
 
-Route::get('register',[auth\RegisterController::class , 'create'])->name('register');
-Route::post('register',[auth\RegisterController::class , 'store'])->name('register');
+// Route::middleware('guest')->group(function () {
+    Route::get('register',[auth\RegisterController::class , 'create'])->name('register')->middleware('guest');
+    Route::post('register',[auth\RegisterController::class , 'store'])->name('register');
 
-Route::get('login',[auth\LoginController::class , 'create'])->name('login');
-Route::post('login',[auth\LoginController::class , 'store'])->name('login');
+    Route::get('login',[auth\LoginController::class , 'create'])->name('login')->middleware('guest');
+    Route::post('login',[auth\LoginController::class , 'store'])->name('login');
+// });
+
+
 
 Route::get('main',function(){
     return view('pages.main.main');
