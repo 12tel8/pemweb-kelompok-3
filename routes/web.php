@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 // auth Controller
 use App\Http\Controllers\auth ; 
+use App\Http\Controllers\payments\StripePaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,11 +17,15 @@ use App\Http\Controllers\auth ;
 |
 */
 
-Route::get('register',[auth\RegisterController::class , 'create'])->name('register');
-Route::post('register',[auth\RegisterController::class , 'store'])->name('register');
+// Route::middleware('guest')->group(function () {
+    Route::get('register',[auth\RegisterController::class , 'create'])->name('register')->middleware('guest');
+    Route::post('register',[auth\RegisterController::class , 'store'])->name('register');
 
-Route::get('login',[auth\LoginController::class , 'create'])->name('login');
-Route::post('login',[auth\LoginController::class , 'store'])->name('login');
+    Route::get('login',[auth\LoginController::class , 'create'])->name('login')->middleware('guest');
+    Route::post('login',[auth\LoginController::class , 'store'])->name('login');
+// });
+
+
 
 Route::get('main',function(){
     return view('pages.main.main');
@@ -49,3 +54,8 @@ Route::get('auth/google/callback',[auth\social\GoogleAuthController::class,'call
 
 Route::get('auth/facebook/redirect',[auth\social\FacebookAuthController::class,'redirect'])->name('facebook/redirect');
 Route::get('auth/facebook/callback',[auth\social\FacebookAuthController::class,'callback'])->name('facebook/callback');
+
+Route::get('kirim-email',[App\Http\Controllers\mail\MailController::class,'index']);
+
+Route::get('stripe', [StripePaymentController::class, 'stripe'])->name('stripe');
+Route::post('stripe', [StripePaymentController::class, 'stripePost'])->name('stripe.post');
