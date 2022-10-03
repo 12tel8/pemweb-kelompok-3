@@ -12,7 +12,8 @@ class Flight extends Model
     use HasFactory;
 
     protected $attributes = [
-        'status' => 0
+        'status' => 0,
+        'refund' => false
     ];
 
     protected $fillable = [
@@ -27,7 +28,6 @@ class Flight extends Model
            'seats',
            'price',
            'discount',
-           'refund'
     ];
 
     public function booking(){
