@@ -1,7 +1,6 @@
 /** @type {import('tailwindcss').Config} */
-const withMT = require("@material-tailwind/html/utils/withMT");
 
-module.exports = withMT({
+module.exports = {
   content: [
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
@@ -11,4 +10,4 @@ module.exports = withMT({
     extend: {},
   },
   plugins: [],
-});
+};
