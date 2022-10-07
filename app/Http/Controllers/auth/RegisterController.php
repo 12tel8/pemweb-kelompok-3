@@ -20,12 +20,18 @@ class RegisterController extends Controller
     public function store(){
         $attributes = request()->validate([
             'username' => ['required','string','min:6'],
-            'email' => ['required','email'],
+            'email' => ['required','email','unique:users'],
             'password' => ['required','min:6']
         ]);
 
+        if(request()->password !== request()->password_confirm){
+            throw ValidationException::withMessages([
+                'error' => "passwords doesn't match"
+            ]);
+        }
+
         auth()->login(User::create($attributes));
 
-        return redirect('/main')->with('success', 'Your account has been created.');
+        return redirect('/home');
     }
 }

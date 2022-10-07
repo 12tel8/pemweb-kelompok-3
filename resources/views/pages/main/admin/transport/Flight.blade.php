@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    @vite('resources/css/app.css')
 </head>
 <body>
+    <x-navbar></x-navbar>
+    <x-admin.flight-form></x-admin.flight-form>
     <form action={{route('admin/flight')}} method="POST">
         @csrf
         <div>
@@ -67,5 +70,7 @@
     <p>flight id {{ $flight->id }}</p>
     <br>
     @endforeach
+
+    <div class="btn btn-red">asdasda</div>
 </body>
 </html>

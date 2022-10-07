@@ -23,11 +23,12 @@ use App\Http\Controllers\main\admin;
 
     Route::get('login',[auth\LoginController::class , 'create'])->name('login')->middleware('guest');
     Route::post('login',[auth\LoginController::class , 'store'])->name('login');
+    Route::get('logout',[auth\LoginController::class , 'destroy'])->name('logout');
 // });
 
 
 
-Route::get('main',function(){
+Route::get('home',function(){
     return view('pages.main.main');
 });
 
