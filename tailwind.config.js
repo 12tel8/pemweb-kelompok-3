@@ -1,7 +1,24 @@
 /** @type {import('tailwindcss').Config} */
-const withMT = require("@material-tailwind/html/utils/withMT");
+const colors = require('tailwindcss/colors')
 
-module.exports = withMT({
+module.exports = {
+  // daisyui: {
+  //   themes: [
+  //     {
+  //       mytheme: {
+  //         // transparent: 'transparent',
+  //         // current: 'currentColor',
+  //         // black: colors.black,
+  //         // white: colors.white,
+  //         // gray: colors.gray,
+  //         // emerald: colors.emerald,
+  //         // indigo: colors.indigo,
+  //         // yellow: colors.yellow,
+        
+  //       },
+  //     },
+  //   ],
+  // },
   content: [
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
@@ -10,5 +27,5 @@ module.exports = withMT({
   theme: {
     extend: {},
   },
-  plugins: [],
-});
+  plugins: [require("daisyui")],
+};

@@ -15,6 +15,17 @@ return new class extends Migration
     {
         Schema::create('flight_bookings', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('flight_id')->references('id')->on('flights');
+            $table->string('name');
+            $table->date('birth_date');
+            $table->string('gender');
+            $table->string('email');
+            $table->string('phone_number');
+            $table->integer('group_length')->nullable();
+            $table->json('group_participant')->nullable();
+            $table->bigInteger('price');
+            $table->integer('discount')->nullable();
+            $table->bigInteger('total');
             $table->timestamps();
         });
     }

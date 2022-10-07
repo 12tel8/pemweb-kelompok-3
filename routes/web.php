@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 // auth Controller
 use App\Http\Controllers\auth ; 
 use App\Http\Controllers\payments\StripePaymentController;
-
+use App\Http\Controllers\main\admin;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,11 +23,12 @@ use App\Http\Controllers\payments\StripePaymentController;
 
     Route::get('login',[auth\LoginController::class , 'create'])->name('login')->middleware('guest');
     Route::post('login',[auth\LoginController::class , 'store'])->name('login');
+    Route::get('logout',[auth\LoginController::class , 'destroy'])->name('logout');
 // });
 
 
 
-Route::get('main',function(){
+Route::get('home',function(){
     return view('pages.main.main');
 });
 
@@ -59,3 +60,6 @@ Route::get('kirim-email',[App\Http\Controllers\mail\MailController::class,'index
 
 Route::get('stripe', [StripePaymentController::class, 'stripe'])->name('stripe');
 Route::post('stripe', [StripePaymentController::class, 'stripePost'])->name('stripe.post');
+
+Route::get('admin/flight',[admin\transport\FlightController::class,'create'])->name('admin/flight');
+Route::post('admin/flight',[admin\transport\FlightController::class,'store'])->name('admin/flight');

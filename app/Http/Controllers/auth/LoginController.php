@@ -20,10 +20,17 @@ class LoginController extends Controller
 
         if (!auth()->attempt($attributes)) {
             throw ValidationException::withMessages([
-                'email' => 'Your provided credentials could not be verified.'
+                'error' => 'Your provided credentials could not be verified.'
             ]);
         }
 
-        return redirect('/main')->with('success', 'Welcome Back!');
+        return redirect('/home');
+    }
+
+    public function destroy()
+    {
+        auth()->logout();
+
+        return redirect('/login');
     }
 }
