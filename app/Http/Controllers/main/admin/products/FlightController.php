@@ -1,17 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\main\admin\transport;
+namespace App\Http\Controllers\main\admin\products;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Flight;
 
+Use Alert;
+
 class FlightController extends Controller
 {
     public function create(){
         $flights = Flight::all();
+        
 
-        return view('pages.main.admin.transport.Flight',[
+        return view('pages.main.admin.products.Flight',[
             'flights' => $flights
         ]);
     }
@@ -33,6 +36,12 @@ class FlightController extends Controller
 
         $create = Flight::create($flights);
 
-        dd($create);
+        if(!$create){
+            session()->flash('error', 'error');
+            return redirect()->back();
+        }
+        session()->flash('success', 'success');
+        return redirect()->back();
+
     }
 }

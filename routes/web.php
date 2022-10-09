@@ -61,5 +61,5 @@ Route::get('kirim-email',[App\Http\Controllers\mail\MailController::class,'index
 Route::get('stripe', [StripePaymentController::class, 'stripe'])->name('stripe');
 Route::post('stripe', [StripePaymentController::class, 'stripePost'])->name('stripe.post');
 
-Route::get('admin/flight',[admin\transport\FlightController::class,'create'])->name('admin/flight');
-Route::post('admin/flight',[admin\transport\FlightController::class,'store'])->name('admin/flight');
+Route::get('flight',[admin\products\FlightController::class,'create'])->name('flight');
+Route::post('flight',[admin\products\FlightController::class,'store'])->name('flight');

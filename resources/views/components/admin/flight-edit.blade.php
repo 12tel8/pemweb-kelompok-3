@@ -1,10 +1,13 @@
-<input type="checkbox" id="flight-post" class="modal-toggle" />
+<input type="checkbox" id="flight-edit" class="modal-toggle" />
         <div class="modal">
         <div class="modal-box lg:w-full lg:max-w-5xl max-w-sm relative">
-            <label for="flight-post" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+            <label for="flight-edit" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
             <h1 class="font-bold mb-5">FLIGHT</h1>
             <form action={{ route("flight") }} method="POST">
               @csrf
+              {{-- {{$data->id}} --}}
+              @foreach($flight as $data)
+              {{$data?->airline_name}}
               <div class="lg:flex lg:justify-center">
                 {{-- airline --}}
                 <div class="lg:mx-14">
@@ -134,13 +137,12 @@
                   </div>
                 </div>
                 {{-- endseatprice --}}
-
-
               </div>
               <div class="lg:mr-14 mt-10 flex lg:justify-end justify-center">
                 <input type="reset" class="btn w-[100px]">
                 <input type="submit" class="btn w-[100px] ml-5">
               </div>
+              @endforeach
             </form>
         </div>
         </div>
