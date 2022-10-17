@@ -54,11 +54,10 @@
             <button class="btn btn-ghost btn-xs">details</button>
           </th>
           <th>
-            <label for="flight-edit" class="btn modal-button">Edit</label>
+            <a href='flight/{{$flight->id}}' class="btn">Edit</a>
             <button class="btn btn-error">Delete</button>
           </th>
         </tr>
-        <x-admin.flight-edit :flight=$flight ></x-admin.flight-edit>
         @endforeach
       </tbody>
     </table>

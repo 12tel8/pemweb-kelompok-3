@@ -62,4 +62,5 @@ Route::get('stripe', [StripePaymentController::class, 'stripe'])->name('stripe')
 Route::post('stripe', [StripePaymentController::class, 'stripePost'])->name('stripe.post');
 
 Route::get('flight',[admin\products\FlightController::class,'create'])->name('flight');
+Route::get('flight/{id}',[admin\products\FlightController::class,'edit'])->name('flight/edit');
 Route::post('flight',[admin\products\FlightController::class,'store'])->name('flight');

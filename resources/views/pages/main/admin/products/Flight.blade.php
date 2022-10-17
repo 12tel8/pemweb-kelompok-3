@@ -21,8 +21,8 @@
         
         <label for="flight-post" class="btn modal-button">open modal</label>
         <x-admin.flight-table :flights="$flights"></x-admin.flight-table>
-        <x-admin.flight-form></x-admin.flight-form>
         <x-admin.flight-edit></x-admin.flight-edit>
+        <x-admin.flight-form></x-admin.flight-form>
 
     
         
