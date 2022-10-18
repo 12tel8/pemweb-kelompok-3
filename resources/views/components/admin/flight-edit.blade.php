@@ -1,8 +1,8 @@
-<input type="checkbox" id="flight-post" class="modal-toggle" />
-        <div class="modal">
+       <div class="modal" id="edit/{{session('flight')?->id}}"> 
         <div class="modal-box lg:w-full lg:max-w-5xl max-w-sm relative">
-            <label for="flight-post" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-            <h1 class="font-bold mb-5">FLIGHT</h1>
+            <a href="#" class="btn btn-sm btn-circle absolute right-2 top-2">✕</a>
+            <h1 class="font-bold mb-5">{{session('flight')?->id}}</h1>
+            {{session('flight')?->airline_name}}
             <form action={{ route("flight") }} method="POST">
               @csrf
               <div class="lg:flex lg:justify-center">
@@ -12,7 +12,7 @@
                     <label class="label">
                       <span class="label-text">Airline Name</span>
                     </label>
-                    <input type="text" name="airline_name" placeholder="Airline Name" class="input input-bordered w-full max-w-xs" />
+                    <input type="text" name="airline_name"  placeholder="Airline Name" class="input input-bordered w-full max-w-xs" />
                     <label class="label">
                       <span class="label-text-alt">Alt label</span>
                     </label>
@@ -134,13 +134,12 @@
                   </div>
                 </div>
                 {{-- endseatprice --}}
-
-
               </div>
               <div class="lg:mr-14 mt-10 flex lg:justify-end justify-center">
                 <input type="reset" class="btn w-[100px]">
                 <input type="submit" class="btn w-[100px] ml-5">
               </div>
+              {{-- @endforeach --}}
             </form>
         </div>
         </div>
