@@ -8,7 +8,6 @@
     @vite('resources/css/app.css')
 </head>
 <body>
-    <x-navbar></x-navbar>
-    hello {{auth()->user()->email}}
+    <x-layout></x-layout>
 </body>
 </html>

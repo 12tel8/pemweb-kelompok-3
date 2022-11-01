@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    
+    <title>Flight</title>
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
@@ -16,32 +15,44 @@
     @vite('resources/css/app.css')
 </head>
 <body>
-    <x-navbar>
-        <!-- The button to open modal -->
+    <x-layout>
+        <div class="">
+            <div>
+                <input type="text" placeholder="Type here" class="input input-bordered w-full " />
+            </div>
+            <div>
+                <div>
+
+                </div>
+                <div>
+
+                </div>
+            </div>
+        </div>
         
-        <label for="flight-post" class="btn modal-button">open modal</label>
+        <a href="flight/form" class="btn">create</a>
         <x-admin.flight-table :flights="$flights"></x-admin.flight-table>
-        <x-admin.flight-edit></x-admin.flight-edit>
-        <x-admin.flight-form></x-admin.flight-form>
+        <x-admin.flight-delete></x-admin.flight-delete>
+        
 
     
         
-    </x-navbar>
+    </x-layout>
     
-    @if(Session::has('success'))
+    @if($session = session('success'))
         <script>
             Swal.fire({
             title: 'Success',
-            text: 'Flight successfully created',
+            text: '{{$session}}',
             icon: 'success',
             confirmButtonText: 'Close'
             })
         </script>
-    @elseif(Session::has('error'))
+    @elseif($session = session('success'))
         <script>
             Swal.fire({
             title: 'error',
-            text: 'flight failed to create',
+            text: '{{$session}}',
             icon: 'error',
             confirmButtonText: 'Close'
             })

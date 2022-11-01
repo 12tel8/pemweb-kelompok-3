@@ -7,7 +7,7 @@
     <title>Booking Pesawat</title>
 </head>
 <body>
-    <x-navbar></x-navbar>
+    <x-layout></x-layout>
 
     
 </body>
