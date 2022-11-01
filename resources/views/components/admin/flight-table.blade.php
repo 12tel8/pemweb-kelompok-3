@@ -7,8 +7,11 @@
           <th>Status</th>
           <th>Airlines</th>
           <th>Destination</th>
-          <th>time</th>
-          <th>Details</th>
+          <th>Time</th>
+          <th>Seat Class</th>
+          <th>Seats</th>
+          <th>Price</th>
+          <th>Discount</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -24,7 +27,9 @@
             @elseif ($flight->status === 1)
                 <div class="badge badge-lg bg-yellow-500 border-transparent">On Progress</div>
             @elseif ($flight->status === 2)
-                <div class="badge badge-lg bg-red-500 border-transparent">Closed</div>
+                <div class="badge badge-lg bg-blue-500 border-transparent">Done</div>
+            @elseif ($flight->status === 2)
+                <div class="badge badge-lg bg-red-500 border-transparent">Delayed</div>
             @endif
           </td>
           <td class="flex justify-center">
@@ -51,11 +56,26 @@
             <div class="">{{$flight->arrival_time}}</div>
           </td>
           <th>
-            <button class="btn btn-ghost btn-xs">details</button>
+            @if ($flight->seat_class === 0)
+                <p>Economy</p>
+            @elseif ($flight->seat_class === 1)
+                <p>Bussines</p>
+            @elseif ($flight->seat_class === 2)
+                <p>First Class</p>
+            @endif
           </th>
           <th>
-            <a href='flight/{{$flight->id}}' class="btn">Edit</a>
-            <button class="btn btn-error">Delete</button>
+            {{$flight->seats}}
+          </th>
+          <th>
+            {{$flight->price}}
+          </th>
+          <th>
+            {{$flight->discount}}
+          </th>
+          <th>
+            <a href='flight/edit/{{$flight->id}}' class="btn">Edit</a>
+            <a href='flight/delete/{{$flight->id}}' class="btn">Delete</a>
           </th>
         </tr>
         @endforeach

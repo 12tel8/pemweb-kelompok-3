@@ -23,11 +23,11 @@ class GoogleAuthController extends Controller
             return redirect('home');
         }else{
             $newUser = User::create([
-                'username' => $user->name,
-                'email' => $user->email,
-                'password' => bcrypt($user->id),
-                'social_provider' => 'google',
-                'provider_id' => $user->id
+                'username'          => $user->name,
+                'email'             => $user->email,
+                'password'          => bcrypt($user->id),
+                'social_provider'   => 'google',
+                'provider_id'       => $user->id
             ]);
     
             auth()->login($newUser);

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('to_location');
             $table->dateTime('departure_time', $precision = 0);
             $table->dateTime('arrival_time', $precision = 0);
-            $table->string('seat_class');
+            $table->integer('seat_class');
             $table->integer('seats');
             $table->bigInteger('price');
             $table->integer('discount')->nullable();

@@ -11,42 +11,83 @@ Use Alert;
 
 class FlightController extends Controller
 {
-    public function create(){
+    public function main(){
         $flights = Flight::all();
         
-        return view('pages.main.admin.products.Flight', compact('flights'));
+        return view('pages.main.admin.products.flight.Flight', compact('flights'));
     }
 
     public function edit($id){
         $flight = Flight::find((int)$id); 
 
-        Session::flash('flight',$flight);
-        return redirect()->to(url()->previous() . '#edit/' . $id )->with('flight',$flight);
+        return view('pages.main.admin.products.flight.Flight-edit', compact('flight'));
+    }
+
+    public function delete($id){
+        return redirect()->to(url()->previous() . '#delete/' . $id )->with('id',$id);
+    }
+
+    public function destroy($id){
+        $flight = Flight::find((int)$id)->delete();
+
+        if(!$flight){
+            return back()->with('error','flight data failed to delete');
+        }
+        return back()->with('success','flight data deleted successfully');
+    }
+
+    public function update($id){
+        $flight = Flight::find((int)$id);
+
+        $attributes = request()->validate([
+            'airline_name'       => ['required'],
+            'plane_id'           => ['required'],
+            'plane_name'         => ['required'],
+            'from_location'      => ['required'],
+            'to_location'        => ['required'],
+            'departure_time'     => ['required'],
+            'arrival_time'       => ['required'],
+            'seat_class'         => ['required'],
+            'seats'              => ['required'],
+            'price'              => ['required'],
+            'discount'           => ['required']
+         ]);
+
+         $update = $flight->update($attributes);
+
+         if(!$update){
+            return redirect()->to('flight')->with('error','data failed to edit');
+        }
+        return redirect()->to('flight')->with('success','data edited successfully');
+
+
+    }
+
+    public function create(){
+        return view('pages.main.admin.products.flight.Flight-form');
     }
 
     public function store(){
-        $flights = [
-           'airline_name' => request()->airline_name,
-           'plane_id' => request()->plane_id,
-           'plane_name' => request()->plane_name,
-           'from_location' => request()->from_location,
-           'to_location' => request()->to_location,
-           'departure_time'=> request()->departure_time,
-           'arrival_time' => request()->arrival_time,
-           'seat_class'=> request()->seat_class,
-           'seats'=> request()->seats,
-           'price'=> request()->price,
-           'discount'=> request()->discount,
-        ];
+        $attributes = request()->validate([
+           'airline_name'       => ['required'],
+           'plane_id'           => ['required'],
+           'plane_name'         => ['required'],
+           'from_location'      => ['required'],
+           'to_location'        => ['required'],
+           'departure_time'     => ['required'],
+           'arrival_time'       => ['required'],
+           'seat_class'         => ['required'],
+           'seats'              => ['required'],
+           'price'              => ['required'],
+           'discount'           => ['required']
+        ]);
 
-        $create = Flight::create($flights);
+        $create = Flight::create($attributes);
 
         if(!$create){
-            session()->flash('error', 'error');
-            return redirect()->back();
+            return redirect()->to('flight')->with('error','data failed to add');
         }
-        session()->flash('success', 'success');
-        return redirect()->back();
+        return redirect()->to('flight')->with('success','data added successfully');
 
     }
 
